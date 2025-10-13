@@ -63,7 +63,7 @@ def main():
     )
 
     # --- Tokenizer 和模型加载 ---
-    model_name = 'bert-base-chinese'
+    model_name = './bert-base-chinese-local'
     print(f"Loading tokenizer and model for '{model_name}'...")
     tokenizer = BertTokenizer.from_pretrained(model_name)
     # num_labels=2 因为是二分类（正面/负面）
@@ -84,7 +84,7 @@ def main():
         weight_decay=0.01,               # 权重衰减
         logging_dir='./logs',            # 日志目录
         logging_steps=10,
-        evaluation_strategy="epoch",     # 每个epoch结束后进行评估
+        eval_strategy="epoch",     # 每个epoch结束后进行评估
         save_strategy="epoch",           # 每个epoch结束后保存模型
         load_best_model_at_end=True,     # 训练结束后加载最优模型
         metric_for_best_model="f1",      # 以f1分数作为最优模型的标准
